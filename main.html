@@ -1,0 +1,98 @@
+// Main Layout with consistent branding and navigation
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Home, About, Services, Contact } from "./pages";
+import { FaPhoneAlt, FaEnvelope, FaStore } from "react-icons/fa";
+
+const App = () => {
+  return (
+    <Router>
+      <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
+        <header className="bg-blue-600 text-white p-4 shadow-md">
+          <div className="container mx-auto flex justify-between items-center">
+            <h1 className="text-2xl font-bold">BrightTech Solutions</h1>
+            <nav className="space-x-4">
+              <Link to="/" className="hover:underline">Home</Link>
+              <Link to="/about" className="hover:underline">About Us</Link>
+              <Link to="/services" className="hover:underline">Services</Link>
+              <Link to="/contact" className="hover:underline">Contact</Link>
+            </nav>
+          </div>
+        </header>
+
+        <main className="container mx-auto p-6">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+
+        <footer className="bg-blue-600 text-white text-center p-4 mt-10">
+          <p>&copy; 2025 BrightTech Solutions. All rights reserved.</p>
+        </footer>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
+
+// pages/index.js
+export const Home = () => (
+  <section className="text-center">
+    <h2 className="text-3xl font-bold mb-4">Innovative Tech Solutions for Modern Businesses</h2>
+    <p className="text-lg mb-6">At BrightTech Solutions, we deliver cutting-edge digital tools to streamline your operations and boost productivity.</p>
+    <img src="https://source.unsplash.com/featured/?technology" alt="Tech" className="mx-auto rounded-xl shadow-lg w-full max-w-3xl" />
+  </section>
+);
+
+export const About = () => (
+  <section>
+    <h2 className="text-2xl font-bold mb-4">Who We Are</h2>
+    <p className="mb-4">BrightTech Solutions is a forward-thinking technology company founded in 2020. Our mission is to help small and medium-sized enterprises harness the power of technology to thrive in the digital age.</p>
+    <img src="https://source.unsplash.com/featured/?teamwork" alt="Teamwork" className="rounded-xl shadow-md w-full max-w-2xl" />
+  </section>
+);
+
+export const Services = () => (
+  <section>
+    <h2 className="text-2xl font-bold mb-4">Our Services</h2>
+    <ul className="space-y-4">
+      <li className="flex items-start space-x-4">
+        <FaStore className="text-blue-600 text-2xl mt-1" />
+        <div>
+          <h3 className="font-semibold text-lg">E-Commerce Solutions</h3>
+          <p>Custom online stores with secure payment integration and user-friendly design.</p>
+        </div>
+      </li>
+      <li className="flex items-start space-x-4">
+        <FaEnvelope className="text-blue-600 text-2xl mt-1" />
+        <div>
+          <h3 className="font-semibold text-lg">Email Marketing</h3>
+          <p>Engage your customers with personalized and automated email campaigns.</p>
+        </div>
+      </li>
+      <li className="flex items-start space-x-4">
+        <FaPhoneAlt className="text-blue-600 text-2xl mt-1" />
+        <div>
+          <h3 className="font-semibold text-lg">24/7 IT Support</h3>
+          <p>Reliable tech support services to keep your business running smoothly.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+);
+
+export const Contact = () => (
+  <section>
+    <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
+    <form className="grid grid-cols-1 gap-4 max-w-xl">
+      <input type="text" placeholder="Name" className="border p-2 rounded" required />
+      <input type="email" placeholder="Email" className="border p-2 rounded" required />
+      <textarea placeholder="Message" className="border p-2 rounded" rows="4" required></textarea>
+      <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Send Message</button>
+    </form>
+  </section>
+);
